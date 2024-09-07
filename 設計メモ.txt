@@ -1,0 +1,75 @@
+・要件
+	受講生の個人情報を管理できること
+		受講生情報を検索、登録、更新、削除ができること
+	受講生が何のコースを受けたかを管理できること
+		受講生のコース情報を検索、登録、更新、削除ができること
+	受講生とコースの関係は１：多である。複数コース情報を考慮すること
+
+	これらの情報を画面上で確認できること or 画面に連携するためのデータを返せること
+	受講生のコース情報を一括変更できること
+
+・技術要件
+	Javaで開発をする
+	SpringBootを使って開発をする
+
+
+・機能
+	受講生情報を管理する機能
+	受講生のコース情報を管理する機能
+
+mysql -u root -h localhost --port 3308 -p
+use studentmanagement;
+show tables;
+SELECT * FROM students;
+describe students_courses;
+
+・ターミナルでの確認
+//確認 10/15
+curl "http://localhost:8080/studentList"
+//追加
+curl -X POST -d "name=TanakaTarou&age=15" http://localhost:8080/student
+//変更
+curl -X PATCH -d "name=KoujiEnami&age=15" "http://localhost:8080/student"
+//削除
+curl -X DELETE -d "name=KoujiEnami" "http://localhost:8080/student"
+
+・仕様
+	受講生情報の定義
+	  ID(varchar)
+		名前（フルネーム）(varchar)
+		フリガナ(varchar)
+		ニックネーム(varchar)
+		メールアドレス(varchar)
+		住んでる地域（市区町村）(varchar)
+		年齢(int)
+		性別（LGBT考慮）(varchar)
+
+	受講生コース情報の定義
+		ID(varchar)
+		student_ID(varchar)
+		course_name(varchar)
+		course_start_date(Timestamp)→日付型
+		course_end_date(Timestamp)→日付型
+
+	DB設計
+		テーブル構成
+			受講生
+			受講生コース
+
+			受講生と受講生コースは関連あり
+			１：Nの関係
+
+			
+
+〇Pull requests
+・Intelli J
+→実行中のプログラム停止
+→kadai10から新規ブランチ作成
+→コミットタブから「コミットとプッシュ」+ 修正
+・github
+→mainタブからブランチ作成時の名前を選択
+→New pull request
+→Create pull request
+
+10/22
+課題：StudentServiceをいじる。
