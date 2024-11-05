@@ -72,5 +72,6 @@ curl -X DELETE -d "name=KoujiEnami" "http://localhost:8080/student"
 →Create pull request
 
 [提出]
-スタンダード第XX回課題提出します。
+スタンダード第12回課題提出します。
 確認よろしくお願いいたします。
+
