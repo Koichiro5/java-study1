@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import raisetech.StudentManagement.data.Student;
-import raisetech.StudentManagement.data.StudentCourses;
+import raisetech.StudentManagement.data.StudentsCourses;
 import raisetech.StudentManagement.repository.StudentRepository;
 
 @SpringBootApplication

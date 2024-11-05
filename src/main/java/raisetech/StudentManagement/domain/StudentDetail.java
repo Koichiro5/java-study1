@@ -5,13 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Helper;
 import raisetech.StudentManagement.data.Student;
-import raisetech.StudentManagement.data.StudentCourses;
+import raisetech.StudentManagement.data.StudentsCourses;
 
 @Getter
 @Setter
 public class StudentDetail {
 
   private Student student;
-  private List<StudentCourses> studentCourses;
+  private List<StudentsCourses> studentCourses;
 
 }
