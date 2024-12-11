@@ -31,6 +31,11 @@ dependencies {
 	//Thymeleaf
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
+
+	//Thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+
 	//Apache Commons Lang 便利機能、ユーティリティ
 	implementation 'org.apache.commons:commons-lang3:3.17.0'
 	//Lombok

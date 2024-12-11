@@ -13,7 +13,7 @@ public class StudentConverter {
 
   public List<StudentDetail> convertStudentDetails(List<Student> students, List<StudentCourses> studentCourses) {
     List<StudentDetail>studentDetails = new ArrayList<>();
-    students.forEach(student -> {
+    for (Student student : students){
       StudentDetail studentDetail = new StudentDetail();
       studentDetail.setStudent(student);
 
@@ -23,7 +23,7 @@ public class StudentConverter {
 
       studentDetail.setStudentCourses(convertStudentCourses);
       studentDetails.add(studentDetail);
-    });
+    };
     return studentDetails;
   }
 }

@@ -6,7 +6,13 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import raisetech.StudentManagement.controller.converter.StudentConverter;
 import raisetech.StudentManagement.data.Student;
@@ -38,5 +44,20 @@ public class StudentController {
   @GetMapping("/studentsCourses")
   public List<StudentCourses> getStudentsCoursesList() {
     return service.searchStudentsCoursesList();
+  }
+
+  @GetMapping("/newStudent")
+  public String newStudent(Model model){
+    model.addAttribute("studentDetail", new StudentDetail());
+    return "registerStudent";
+  }
+
+  @PostMapping("/registerStudent")
+  public String registerStudent(@ModelAttribute StudentDetail studentDetail, BindingResult result){
+    if(result.hasErrors()){
+      return "registerStudent";
+    }
+    service.registerStudent(studentDetail);
+    return "redirect:/studentList";
   }
 }
