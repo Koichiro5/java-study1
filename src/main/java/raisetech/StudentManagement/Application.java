@@ -14,8 +14,24 @@ import raisetech.StudentManagement.repository.StudentRepository;
 @SpringBootApplication
 public class Application {
 
+	@Autowired
+	private StudentRepository repository;
+
+	private Map<String,String>student;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+	}
+
+
+	@GetMapping("/studentList")
+	public List<Student> getStudentList(){
+		return repository.search();
+	}
+
+	@GetMapping("/studentsCourses")
+	public List<StudentCourses> getStudentsCoursesList(){
+		return repository.searchCourses();
 	}
 }
 
