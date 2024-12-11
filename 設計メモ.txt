@@ -58,3 +58,20 @@ curl -X DELETE -d "name=KoujiEnami" "http://localhost:8080/student"
 
 			受講生と受講生コースは関連あり
 			１：Nの関係
+
+			
+
+〇Pull requests
+・Intelli J
+→実行中のプログラム停止
+→kadai10から新規ブランチ作成
+→コミットタブから「コミットとプッシュ」+ 修正
+・github
+→mainタブからブランチ作成時の名前を選択
+→New pull request
+→Create pull request
+
+[提出]
+スタンダード第12回課題提出します。
+確認よろしくお願いいたします。
+

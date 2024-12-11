@@ -7,9 +7,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import raisetech.StudentManagement.data.Student;
+import raisetech.StudentManagement.data.StudentCourses;
+import raisetech.StudentManagement.repository.StudentRepository;
 
 @SpringBootApplication
-@RestController
 public class Application {
 
 	@Autowired
@@ -21,6 +23,7 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+
 	@GetMapping("/studentList")
 	public List<Student> getStudentList(){
 		return repository.search();
@@ -31,3 +34,4 @@ public class Application {
 		return repository.searchCourses();
 	}
 }
+
