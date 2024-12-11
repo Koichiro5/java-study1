@@ -72,6 +72,7 @@ curl -X DELETE -d "name=KoujiEnami" "http://localhost:8080/student"
 →Create pull request
 
 [提出]
+
 スタンダード第14回課題提出します。
 確認よろしくお願いいたします。
 https://github.com/Koichiro5/java-study1/pull/5#issue-2635221767
@@ -105,3 +106,6 @@ VALUES ('name', 'furigana', 'nickname', 'email', 'region', age, 'gender')
 
 INSERT INTO students_courses (student_id, course_name, course_start_date, course_end_date)
 VALUES (1,'Java Basic','2024-01-23 00:00:00', '2024-04-22 00:00:00');
+
+
+
