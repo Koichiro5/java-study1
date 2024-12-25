@@ -10,8 +10,12 @@ import raisetech.StudentManagement.data.Student;
 
 import raisetech.StudentManagement.data.StudentsCourses;
 
+
+import raisetech.StudentManagement.data.StudentsCourses;
+
 import raisetech.StudentManagement.data.StudentCourses;
 import raisetech.StudentManagement.domain.StudentDetail;
+
 
 
 @Mapper
@@ -47,10 +51,12 @@ public interface StudentRepository {
   @Update("UPDATE students_courses SET course_name = #{courseName} WHERE id = #{id}")
   void updateStudentCourses(StudentsCourses studentCourses);
 
+
   @Insert("INSERT INTO students(name, furigana, nickname, email, region, age, gender, remark, is_Deleted) "
       + "VALUES (#{name}, #{furigana}, #{nickname}, #{email}, #{region}, #{age}, #{gender}, #{remark}, false)")
   @Options(useGeneratedKeys = true,keyProperty = "id")
   void registerStudent(Student student);
+
 
 
 }

@@ -9,7 +9,11 @@ import raisetech.StudentManagement.data.Student;
 
 import raisetech.StudentManagement.data.StudentsCourses;
 
+
+import raisetech.StudentManagement.data.StudentsCourses;
+
 import raisetech.StudentManagement.data.StudentCourses;
+
 
 import raisetech.StudentManagement.domain.StudentDetail;
 import raisetech.StudentManagement.repository.StudentRepository;
@@ -41,6 +45,21 @@ public class StudentService {
     return repository.searchCoursesList();
   }
 
+
+  public StudentDetail searchStudent(String id){
+    Student student = repository.searchStudent(id);
+    List<StudentsCourses> studentsCourses = repository.searchStudentsCourses(student.getId());
+    StudentDetail studentDetail = new StudentDetail();
+    studentDetail.setStudent(student);
+    studentDetail.setStudentCourses(studentsCourses);
+    return studentDetail;
+  }
+
+  public List<StudentsCourses> searchStudentsCoursesList(){
+    return repository.searchCoursesList();
+  }
+
+
   @Transactional
   public void registerStudent(StudentDetail studentDetail){
     repository.registerStudent(studentDetail.getStudent());
@@ -51,6 +70,15 @@ public class StudentService {
       repository.registerStudentCourses(studentsCourses);
     }
   }
+
+
+  @Transactional
+  public void updateStudent(StudentDetail studentDetail){
+    repository.updateStudent(studentDetail.getStudent());
+    for(StudentsCourses studentsCourses : studentDetail.getStudentCourses()) {
+      repository.updateStudentCourses(studentsCourses);
+    }
+
 
   @Transactional
   public void updateStudent(StudentDetail studentDetail){
@@ -63,5 +91,6 @@ public class StudentService {
   @Transactional
   public void registerStudent(StudentDetail studentDetail){
     repository.registerStudent(studentDetail.getStudent());
+
   }
 }

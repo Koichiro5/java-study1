@@ -73,6 +73,11 @@ curl -X DELETE -d "name=KoujiEnami" "http://localhost:8080/student"
 
 [提出]
 
+スタンダード第16回課題提出します。
+確認よろしくお願いいたします。
+https://github.com/Koichiro5/java-study1/pull/7#issue-2732679839
+
+
 スタンダード第15回課題提出します。
 確認よろしくお願いいたします。
 https://github.com/Koichiro5/java-study1/pull/6#issue-2671739059
@@ -81,6 +86,7 @@ https://github.com/Koichiro5/java-study1/pull/6#issue-2671739059
 スタンダード第14回課題提出します。
 確認よろしくお願いいたします。
 https://github.com/Koichiro5/java-study1/pull/5#issue-2635221767
+
 
 
 ・一部修正：3件程度
@@ -114,4 +120,10 @@ INSERT INTO students_courses (student_id, course_name, course_start_date, course
 VALUES (1,'Java Basic','2024-01-23 00:00:00', '2024-04-22 00:00:00');
 
 
+
+
+
+11/27
+・受講生更新の画面を作る。
+・
 
