@@ -35,12 +35,15 @@ public class StudentController {
   }
 
   @GetMapping("/studentList")
-  public String getStudentList(Model model) {
+  public List<StudentDetail> getStudentList(){
     List<Student> students = service.searchStudentList();
-    List<StudentsCourses> studentCourses = service.searchStudentsCoursesList();
+    List<StudentsCourses> studentsCourses = service.searchStudentsCoursesList();
+    return converter.convertStudentDetails(students, studentsCourses);
+  }
 
-    model.addAttribute("studentList", converter.convertStudentDetails(students, studentCourses));
-    return "studentList";
+  @GetMapping("/student/{id}")
+  public StudentDetail getStudent(@PathVariable String id){
+    return service.searchStudent(id);
   }
 
   @GetMapping("/newStudent")
