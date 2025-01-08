@@ -72,9 +72,9 @@ curl -X DELETE -d "name=KoujiEnami" "http://localhost:8080/student"
 →Create pull request
 
 [提出]
-スタンダード第17回課題提出します。
+スタンダード第20回課題提出します。
 確認よろしくお願いいたします。
-https://github.com/Koichiro5/java-study1/pull/8#issue-2747627466
+https://github.com/Koichiro5/java-study1/pull/9#issue-2759689914
 
 ・一部修正：3件程度
 CREATE TABLE students (

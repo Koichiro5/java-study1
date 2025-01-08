@@ -22,42 +22,46 @@ import raisetech.StudentManagement.data.StudentsCourses;
 import raisetech.StudentManagement.domain.StudentDetail;
 import raisetech.StudentManagement.service.StudentService;
 
-@Controller
+/**
+ *受講生の検索や登録、更新などを行うREST APIとして受け付けるControllerです。
+ */
+@RestController
 public class StudentController {
 
   private StudentService service;
-  private StudentConverter converter;
 
   @Autowired
-  public StudentController(StudentService service, StudentConverter converter) {
+  public StudentController(StudentService service) {
     this.service = service;
-    this.converter = converter;
   }
 
+  /**
+   * 受講生一覧検索です。
+   * 全件検索を行うので、条件指定は行いません。
+   *
+   * @return　受講生一覧（全件）
+   */
   @GetMapping("/studentList")
-  public String getStudentList(Model model) {
-    List<Student> students = service.searchStudentList();
-    List<StudentsCourses> studentCourses = service.searchStudentsCoursesList();
-
-    model.addAttribute("studentList", converter.convertStudentDetails(students, studentCourses));
-    return "studentList";
+  public List<StudentDetail> getStudentList(){
+    return service.searchStudentList();
   }
 
-  @GetMapping("/newStudent")
-  public String newStudent(Model model){
-    StudentDetail studentDetail = new StudentDetail();
-    studentDetail.setStudentCourses(Arrays.asList(new StudentsCourses()));
-    model.addAttribute("studentDetail", studentDetail);
-    return "registerStudent";
+  /**
+   * 受講生検索です。
+   * IDに紐づく任意の受講生の情報を取得します。
+   *
+   * @param id　受講生ID
+   * @return　受講生
+   */
+  @GetMapping("/student/{id}")
+  public StudentDetail getStudent(@PathVariable String id){
+    return service.searchStudent(id);
   }
 
   @PostMapping("/registerStudent")
-  public String registerStudent(@ModelAttribute StudentDetail studentDetail, BindingResult result){
-    if(result.hasErrors()){
-      return "registerStudent";
-    }
-    service.registerStudent(studentDetail);
-    return "redirect:/studentList";
+  public ResponseEntity<StudentDetail> registerStudent(@RequestBody StudentDetail studentDetail){
+    StudentDetail responseStudentDetail = service.registerStudent(studentDetail);
+    return ResponseEntity.ok(responseStudentDetail);
   }
 
   @PostMapping("/updateStudent")
