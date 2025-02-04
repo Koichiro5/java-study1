@@ -57,6 +57,9 @@ public class StudentController {
   }
 
   @GetMapping("/studentList")
+
+  public List<StudentDetail> getStudentList(){
+
   public String getStudentList(Model model) {
 
 
@@ -87,11 +90,15 @@ public class StudentController {
     List<Student> students = service.searchStusdentList();
     List<StudentsCourses> studentCourses = service.searchStudentsCoursesList();
 
-    List<Student> students = service.searchStudentList();
-    List<StudentsCourses> studentCourses = service.searchStudentsCoursesList();
 
-    model.addAttribute("studentList", converter.convertStudentDetails(students, studentCourses));
-    return "studentList";
+    List<Student> students = service.searchStudentList();
+    List<StudentsCourses> studentsCourses = service.searchStudentsCoursesList();
+    return converter.convertStudentDetails(students, studentsCourses);
+  }
+
+  @GetMapping("/student/{id}")
+  public StudentDetail getStudent(@PathVariable String id){
+    return service.searchStudent(id);
   }
 
   @GetMapping("/newStudent")
