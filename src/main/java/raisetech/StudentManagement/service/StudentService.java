@@ -12,7 +12,11 @@ import raisetech.StudentManagement.data.StudentsCourses;
 
 import raisetech.StudentManagement.data.StudentsCourses;
 
+
+import raisetech.StudentManagement.data.StudentsCourses;
+
 import raisetech.StudentManagement.data.StudentCourses;
+
 
 
 import raisetech.StudentManagement.domain.StudentDetail;
@@ -24,11 +28,19 @@ public class StudentService {
   private StudentRepository repository;
 
   @Autowired
+
+  public StudentService(StudentRepository repository){
+    this.repository = repository;
+  }
+
+  public List<Student> searchStudentList(){
+
   public StudentService(StudentRepository repository)
   {this.repository = repository;
   }
 
   public List<Student> searchStusdentList(){
+
     return repository.search();
   }
 
@@ -40,6 +52,11 @@ public class StudentService {
     studentDetail.setStudentCourses(studentsCourses);
     return studentDetail;
   }
+
+
+  public List<StudentsCourses> searchStudentsCoursesList(){
+    return repository.searchCoursesList();
+
 
   public List<StudentsCourses> searchStudentsCoursesList(){
     return repository.searchCoursesList();
@@ -86,11 +103,29 @@ public class StudentService {
     for(StudentsCourses studentsCourses : studentDetail.getStudentCourses()) {
       repository.updateStudentCourses(studentsCourses);
     }
+
   }
 
   @Transactional
   public void registerStudent(StudentDetail studentDetail){
     repository.registerStudent(studentDetail.getStudent());
+
+    for(StudentsCourses studentsCourses : studentDetail.getStudentCourses()) {
+      studentsCourses.setStudentId(studentDetail.getStudent().getId());
+      studentsCourses.setCourseStartDate(LocalDateTime.now());
+      studentsCourses.setCourseEndDate(LocalDateTime.now().plusYears(1));
+      repository.registerStudentCourses(studentsCourses);
+    }
+  }
+
+  @Transactional
+  public void updateStudent(StudentDetail studentDetail){
+    repository.updateStudent(studentDetail.getStudent());
+    for(StudentsCourses studentsCourses : studentDetail.getStudentCourses()) {
+      repository.updateStudentsCourses(studentsCourses);
+    }
+
+
 
   }
 }

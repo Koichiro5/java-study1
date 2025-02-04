@@ -39,8 +39,6 @@
     <input type="text" id="remark" th:field="*{student.remark}"  />
   </div>
 
-
-
   <div th:each="course, stat : *{studentCourses}">
     <label for="courseName" th:for="studentsCourse.__${stat.index}__.courseName">受講コース名:</label>
     <input type="text" id="courseName" th:id="studentsCourse.__${stat.index}__.courseName"

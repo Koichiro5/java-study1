@@ -13,15 +13,19 @@ import raisetech.StudentManagement.data.StudentsCourses;
 
 import raisetech.StudentManagement.data.StudentsCourses;
 
+
+import raisetech.StudentManagement.data.StudentsCourses;
+
 import raisetech.StudentManagement.data.StudentCourses;
 import raisetech.StudentManagement.domain.StudentDetail;
+
 
 
 
 @Mapper
 public interface StudentRepository {
 
-  @Select("SELECT * FROM students")
+  @Select("SELECT * FROM students WHERE is_Deleted = false")
   List<Student> search();
 
   @Select("SELECT * FROM students WHERE id = #{id}")
@@ -49,6 +53,9 @@ public interface StudentRepository {
   void updateStudent(Student student);
 
   @Update("UPDATE students_courses SET course_name = #{courseName} WHERE id = #{id}")
+
+  void updateStudentsCourses(StudentsCourses studentCourses);
+
   void updateStudentCourses(StudentsCourses studentCourses);
 
 
@@ -56,6 +63,7 @@ public interface StudentRepository {
       + "VALUES (#{name}, #{furigana}, #{nickname}, #{email}, #{region}, #{age}, #{gender}, #{remark}, false)")
   @Options(useGeneratedKeys = true,keyProperty = "id")
   void registerStudent(Student student);
+
 
 
 
